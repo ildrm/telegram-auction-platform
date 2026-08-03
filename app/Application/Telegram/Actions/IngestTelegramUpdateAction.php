@@ -7,6 +7,7 @@ namespace App\Application\Telegram\Actions;
 use App\Domain\Telegram\Enums\TelegramUpdateStatus;
 use App\Jobs\Telegram\ProcessTelegramUpdate;
 use App\Models\TelegramUpdate;
+use Illuminate\Validation\ValidationException;
 
 final class IngestTelegramUpdateAction
 {
@@ -16,7 +17,7 @@ final class IngestTelegramUpdateAction
         $updateId = filter_var($payload['update_id'] ?? null, FILTER_VALIDATE_INT);
 
         if ($updateId === false || $updateId < 0) {
-            throw \Illuminate\Validation\ValidationException::withMessages([
+            throw ValidationException::withMessages([
                 'update_id' => ['A valid Telegram update_id is required.'],
             ]);
         }

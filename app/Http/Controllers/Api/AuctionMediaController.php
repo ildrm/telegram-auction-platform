@@ -12,6 +12,7 @@ use App\Models\Auction;
 use App\Models\AuctionMedia;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -41,7 +42,7 @@ final class AuctionMediaController extends Controller
         );
     }
 
-    public function destroy(Request $request, AuctionMedia $media, DeleteAuctionImageAction $action): \Illuminate\Http\Response
+    public function destroy(Request $request, AuctionMedia $media, DeleteAuctionImageAction $action): Response
     {
         /** @var User $user */
         $user = $request->user();

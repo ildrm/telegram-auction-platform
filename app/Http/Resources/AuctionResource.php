@@ -7,10 +7,11 @@ namespace App\Http\Resources;
 use App\Domain\Auctions\Enums\AuctionStatus;
 use App\Domain\Auctions\Enums\AuctionType;
 use App\Domain\Auctions\Services\DutchPriceCalculator;
+use App\Models\Auction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\Auction */
+/** @mixin Auction */
 final class AuctionResource extends JsonResource
 {
     /** @return array<string, mixed> */

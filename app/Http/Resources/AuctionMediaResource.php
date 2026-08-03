@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
+use App\Models\AuctionMedia;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
-/** @mixin \App\Models\AuctionMedia */
+/** @mixin AuctionMedia */
 final class AuctionMediaResource extends JsonResource
 {
     public function toArray(Request $request): array

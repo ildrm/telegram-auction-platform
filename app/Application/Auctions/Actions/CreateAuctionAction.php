@@ -6,6 +6,7 @@ namespace App\Application\Auctions\Actions;
 
 use App\Application\Auctions\Data\CreateAuctionData;
 use App\Application\Audit\AuditLogger;
+use App\Domain\Auctions\Enums\AuctionStatus;
 use App\Domain\Auctions\Enums\AuctionType;
 use App\Domain\Auctions\Events\AuctionCreated;
 use App\Models\Auction;
@@ -82,7 +83,7 @@ final readonly class CreateAuctionAction
                 'slug' => $this->uniqueSlug($data->title),
                 'description' => $data->description,
                 'type' => $data->type,
-                'status' => \App\Domain\Auctions\Enums\AuctionStatus::Draft,
+                'status' => AuctionStatus::Draft,
                 'currency' => $data->currency,
                 'starting_price_minor' => $data->startingPriceMinor,
                 'current_price_minor' => $data->startingPriceMinor,

@@ -12,6 +12,7 @@ use App\Models\Auction;
 use App\Models\AuditLog;
 use App\Models\Bid;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
@@ -65,7 +66,7 @@ final class PlaceBidActionTest extends TestCase
         $seller = User::factory()->create();
         $auction = Auction::factory()->for($seller, 'seller')->active()->create();
 
-        $this->expectException(\Illuminate\Auth\Access\AuthorizationException::class);
+        $this->expectException(AuthorizationException::class);
 
         $this->app->make(PlaceBidAction::class)->execute(
             auction: $auction,

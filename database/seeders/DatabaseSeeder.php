@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Domain\Users\Enums\UserStatus;
 use App\Models\Auction;
 use App\Models\Category;
 use App\Models\Role;
@@ -31,7 +32,7 @@ final class DatabaseSeeder extends Seeder
             'email' => 'seller@example.com',
         ]);
         $seller->roles()->attach(
-            \App\Models\Role::query()->where('slug', 'seller')->value('id'),
+            Role::query()->where('slug', 'seller')->value('id'),
             ['created_at' => now()],
         );
 
@@ -40,7 +41,7 @@ final class DatabaseSeeder extends Seeder
             'email' => 'bidder@example.com',
         ]);
         $bidder->roles()->attach(
-            \App\Models\Role::query()->where('slug', 'user')->value('id'),
+            Role::query()->where('slug', 'user')->value('id'),
             ['created_at' => now()],
         );
 
@@ -80,7 +81,7 @@ final class DatabaseSeeder extends Seeder
                 'password' => $password,
                 'locale' => config('app.locale'),
                 'timezone' => config('app.timezone'),
-                'status' => \App\Domain\Users\Enums\UserStatus::Active,
+                'status' => UserStatus::Active,
                 'is_verified' => true,
             ],
         );

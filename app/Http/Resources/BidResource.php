@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
+use App\Models\Bid;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\Bid */
+/** @mixin Bid */
 final class BidResource extends JsonResource
 {
     /** @return array<string, mixed> */
